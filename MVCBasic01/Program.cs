@@ -13,6 +13,7 @@ namespace MVCBasic01
     {
         public static void Main(string[] args)
         {
+            //CreateHostBuilder : contain UseStartup to use it
             CreateHostBuilder(args).Build().Run();
         }
 
