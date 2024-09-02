@@ -23,13 +23,16 @@ namespace MVCBasic01
             //  åæÇ Çáí íßÑíÊ ÇáÇæÈÌíÊ áÇÍÙ ãÔ åíÑßíÊ æÇÍÏ ÌÏíÏ åíÓÊÎÏã äİÓ ÇáŞÏíã CLR İÇ áãÇ ÇÌí Çßáã Çí ÊÇÈá ÊÇäí ãÍÊÇÌ ÇæÈÌíßÊ İÇ Çá 
             // one object for two table 
 
-            // register mvc built in services to the container
+            // register mvc built in services of controller to the container
             // did't support view
 
-            services.AddControllers();
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // we write middelware in configure
+        //middelware is ÈæÇÈÇÊ code pass form it
+        //order of middelware is important
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // Configure : some middelware
@@ -37,6 +40,9 @@ namespace MVCBasic01
             {
                 app.UseDeveloperExceptionPage();
             }
+            //bootstrap file is static file in WWWroot so to responce it 
+            // request must pass over middleware cooled usestaticfile
+            app.UseStaticFiles();
 
             // middelware (pipeline)
             // check if the route (ãÓÇÑ) that send to her is found or not
@@ -61,7 +67,7 @@ namespace MVCBasic01
                 // So we must add service in ConfigureServices that this method need (add controller)
                 endpoints.MapControllerRoute(
                     name : "default", // route name
-                    pattern: "{controller=Movie}/{action=Index}/{id:int?}/{name:alpha?}" //pattern of route (url path)
+                    pattern: "{controller=Home}/{action=Index}/{id:int?}/{name:alpha?}" //pattern of route (url path)
                                                            //URL/SEGMENT/{SEGMENT}/x{SEGMENT}
                                                            //    static  variable  mixed
                     // order of pattern is important controller-->action-->id?

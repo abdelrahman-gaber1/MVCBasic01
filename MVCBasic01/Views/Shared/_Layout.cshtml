@@ -1,0 +1,58 @@
+﻿@* 
+// to reusable the same code in view use layout
+//to perevent repeated code
+//layout contain repated code in views
+//you can make o lot of layout
+//you can make layout for every commin shape
+//default layout named as _layout
+//the diffirent part render in RenderBody
+ *@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/WWWroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+
+    @* start header *@
+    <nav>
+        <center>
+            <a href="/Home/Index" class="btn btn-primary">Home</a>
+            <a href="/Home/Index" class="btn btn-primary">Home2</a>
+            @* //html helper method to use it insted of html tag *@
+            @* //more dynaminc but more defecult as syntax *@
+            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-primary" })
+            @* @Html.BeginForm *@
+            @* @Html.CheckBox() *@
+
+            @* //.Net core provide easy syntax *@
+            @* //tag helper *@
+            <a asp-controller="Home" asp-action="Index"  class="btn btn-primary">Home3</a>
+            @* asp-route-id="10" *@
+
+            <a href="/Home/AboutUs" class="btn btn-warning">About Us</a>
+            <a href="/Home/Privacy" class="btn btn-success">Privacy</a>
+            <a href="/Home/ContactUs" class="btn btn-light">Contact Us</a>
+            <a href="/Account/Login" class="btn btn-danger">Login</a>
+            <a href="/Account/Register" class="btn btn-info">Register</a>
+        </center>
+    </nav>
+    @* end header *@
+    <div>
+        @RenderBody()
+    </div>
+
+    @* Start Footer *@
+    <footer>
+        <center>
+            <div>
+                <p>CopyRights &copy; for route @DateTime.Now.Year</p>
+            </div>
+        </center>
+    </footer>
+    @* End Footer *@
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @* 
+        //viewBag found only in mvc project because he is deal with views
+       // viewBag like Bag may be have title (ViewBag.Title)
+      //may be have hamada (ViewBag.hamada)
+     //ViewBag.Title = Login
+     //property title contain login if attach to login
+     //property title contain register if attched to register
+     //viewBag is dynamic beacause you dont know what you will send in it
+    *@
+    <title>@ViewBag.Title</title>
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
