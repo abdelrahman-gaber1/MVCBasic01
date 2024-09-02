@@ -2,7 +2,7 @@
 
 namespace MVCBasic01.Controllers
 {
-    public class AccountContraller : Controller
+    public class AccountController : Controller
     {
         public IActionResult Login()
         {
